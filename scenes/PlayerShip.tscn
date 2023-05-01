@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://12eeg4ddxo4j"]
+
+[ext_resource type="Texture2D" uid="uid://dvnxiov36kwhj" path="res://assets/ship.png" id="1_k6ws8"]
+[ext_resource type="Script" path="res://scripts/PlayerShip.gd" id="1_t4m0v"]
+[ext_resource type="PackedScene" uid="uid://br2lov3ax036e" path="res://scenes/ShipInventory.tscn" id="3_fk4m6"]
+[ext_resource type="PackedScene" uid="uid://dgbbnkr68qoa6" path="res://scenes/TownPanel.tscn" id="4_d3oce"]
+[ext_resource type="PackedScene" uid="uid://cknrtidfk7luj" path="res://scenes/CoinDisplay.tscn" id="5_8flui"]
+[ext_resource type="PackedScene" uid="uid://cual1d6ktlqjq" path="res://scenes/PauseMenu.tscn" id="6_1173l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lp00u"]
+size = Vector2(48, 48)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ir36e"]
+radius = 100.0
+
+[node name="PlayerShip" type="CharacterBody2D"]
+script = ExtResource("1_t4m0v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k6ws8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lp00u")
+
+[node name="DockingRange" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DockingRange"]
+shape = SubResource("CircleShape2D_ir36e")
+
+[node name="ShipInventory" parent="." instance=ExtResource("3_fk4m6")]
+offset_left = -427.0
+offset_top = -240.0
+offset_right = 427.0
+offset_bottom = 240.0
+
+[node name="TownPanel" parent="." instance=ExtResource("4_d3oce")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -417.0
+offset_top = -230.0
+offset_right = 417.0
+offset_bottom = 230.0
+
+[node name="CoinDisplay" parent="." instance=ExtResource("5_8flui")]
+offset_left = -427.0
+offset_top = -240.0
+offset_right = -317.0
+offset_bottom = -185.0
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_1173l")]
+visible = false
+
+[connection signal="body_entered" from="DockingRange" to="." method="_on_docking_range_body_entered"]
+[connection signal="body_exited" from="DockingRange" to="." method="_on_docking_range_body_exited"]
+[connection signal="inventory_open" from="ShipInventory" to="." method="_on_ship_inventory_open"]
+[connection signal="item_picked" from="ShipInventory" to="." method="_on_ship_inventory_item_picked"]
+[connection signal="item_placed" from="ShipInventory" to="." method="_on_ship_inventory_item_placed"]
+[connection signal="item_picked" from="TownPanel" to="." method="_on_town_panel_item_picked"]
+[connection signal="item_placed" from="TownPanel" to="." method="_on_town_panel_item_placed"]
+[connection signal="panel_closed" from="TownPanel" to="." method="_on_town_panel_closed"]
+[connection signal="resume" from="PauseMenu" to="." method="_on_pause_menu_resume"]

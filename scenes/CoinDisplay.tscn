@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cknrtidfk7luj"]
+
+[ext_resource type="Script" path="res://scripts/CoinDisplay.gd" id="1_t05qc"]
+[ext_resource type="Texture2D" uid="uid://bwei80vlmxvfp" path="res://assets/coin.png" id="2_phh18"]
+
+[node name="CoinDisplay" type="PanelContainer"]
+process_mode = 3
+script = ExtResource("1_t05qc")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_phh18")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+theme_override_colors/font_color = Color(0.133333, 0.12549, 0.203922, 1)
+text = "Coins"
+vertical_alignment = 1

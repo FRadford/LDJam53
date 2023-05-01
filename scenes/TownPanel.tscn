@@ -1,0 +1,358 @@
+[gd_scene load_steps=13 format=3 uid="uid://dgbbnkr68qoa6"]
+
+[ext_resource type="Script" path="res://scripts/TownPanel.gd" id="1_hehv6"]
+[ext_resource type="Texture2D" uid="uid://bdv53a2hn6wk4" path="res://assets/inventory_slot.png" id="1_qrevp"]
+[ext_resource type="FontFile" uid="uid://dcd1j55ctxhcr" path="res://fonts/Berylium/Berylium.ttf" id="2_y4j26"]
+[ext_resource type="PackedScene" uid="uid://w5dwni664mt0" path="res://scenes/InventorySlot.tscn" id="3_8k5cy"]
+[ext_resource type="PackedScene" uid="uid://b0h6kxq40smi6" path="res://scenes/UICloseButton.tscn" id="4_32d71"]
+[ext_resource type="Theme" uid="uid://c4uxo8xq1upx0" path="res://LudumTheme.tres" id="4_qotfa"]
+[ext_resource type="FontFile" uid="uid://dihdof2wy1i5n" path="res://fonts/Berylium/Beryliumbold.ttf" id="5_864e5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tw63w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c0x5o"]
+content_margin_left = 20.0
+content_margin_top = 5.0
+content_margin_right = 20.0
+content_margin_bottom = 5.0
+draw_center = false
+
+[sub_resource type="InputEventAction" id="InputEventAction_06uos"]
+action = &"ui_cancel"
+
+[sub_resource type="InputEventAction" id="InputEventAction_iaylv"]
+action = &"inventory"
+
+[sub_resource type="Shortcut" id="Shortcut_iqbyk"]
+events = [SubResource("InputEventAction_06uos"), SubResource("InputEventAction_iaylv")]
+
+[node name="TownPanel" type="PanelContainer"]
+process_mode = 3
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hehv6")
+
+[node name="InventoryPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tw63w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Header" type="MarginContainer" parent="InventoryPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Background" type="NinePatchRect" parent="InventoryPanel/VBoxContainer/Header"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_qrevp")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="InventoryPanel/VBoxContainer/Header"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c0x5o")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InventoryPanel/VBoxContainer/Header/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InventoryPanel/VBoxContainer/Header/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("2_y4j26")
+text = "Town Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UICloseButton" parent="InventoryPanel/VBoxContainer/Header/PanelContainer/HBoxContainer" instance=ExtResource("4_32d71")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_iqbyk")
+
+[node name="Body" type="HBoxContainer" parent="InventoryPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PlayerInventory" type="GridContainer" parent="InventoryPanel/VBoxContainer/Body"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 3
+
+[node name="InventorySlot1" parent="InventoryPanel/VBoxContainer/Body/PlayerInventory" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../..")
+inventory_type = "player"
+
+[node name="InventorySlot2" parent="InventoryPanel/VBoxContainer/Body/PlayerInventory" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../..")
+inventory_type = "player"
+
+[node name="InventorySlot3" parent="InventoryPanel/VBoxContainer/Body/PlayerInventory" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../..")
+inventory_type = "player"
+
+[node name="InventorySlot4" parent="InventoryPanel/VBoxContainer/Body/PlayerInventory" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../..")
+inventory_type = "player"
+
+[node name="InventorySlot5" parent="InventoryPanel/VBoxContainer/Body/PlayerInventory" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../..")
+inventory_type = "player"
+
+[node name="InventorySlot6" parent="InventoryPanel/VBoxContainer/Body/PlayerInventory" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../..")
+inventory_type = "player"
+
+[node name="InventorySlot7" parent="InventoryPanel/VBoxContainer/Body/PlayerInventory" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../..")
+inventory_type = "player"
+
+[node name="InventorySlot8" parent="InventoryPanel/VBoxContainer/Body/PlayerInventory" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../..")
+inventory_type = "player"
+
+[node name="InventorySlot9" parent="InventoryPanel/VBoxContainer/Body/PlayerInventory" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../..")
+inventory_type = "player"
+
+[node name="InventorySlot10" parent="InventoryPanel/VBoxContainer/Body/PlayerInventory" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../..")
+inventory_type = "player"
+
+[node name="InventorySlot11" parent="InventoryPanel/VBoxContainer/Body/PlayerInventory" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../..")
+inventory_type = "player"
+
+[node name="InventorySlot12" parent="InventoryPanel/VBoxContainer/Body/PlayerInventory" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../..")
+inventory_type = "player"
+
+[node name="InventorySlot13" parent="InventoryPanel/VBoxContainer/Body/PlayerInventory" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../..")
+inventory_type = "player"
+
+[node name="InventorySlot14" parent="InventoryPanel/VBoxContainer/Body/PlayerInventory" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../..")
+inventory_type = "player"
+
+[node name="InventorySlot15" parent="InventoryPanel/VBoxContainer/Body/PlayerInventory" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../..")
+inventory_type = "player"
+
+[node name="Sidebar" type="MarginContainer" parent="InventoryPanel/VBoxContainer/Body"]
+layout_mode = 2
+
+[node name="Background" type="NinePatchRect" parent="InventoryPanel/VBoxContainer/Body/Sidebar"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_qrevp")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="InventoryPanel/VBoxContainer/Body/Sidebar"]
+layout_mode = 2
+theme = ExtResource("4_qotfa")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryPanel/VBoxContainer/Body/Sidebar/PanelContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="InventoryPanel/VBoxContainer/Body/Sidebar/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+theme_override_fonts/font = ExtResource("2_y4j26")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InventoryPanel/VBoxContainer/Body/Sidebar/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ValueHeader" type="Label" parent="InventoryPanel/VBoxContainer/Body/Sidebar/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderSmall"
+theme_override_fonts/font = ExtResource("5_864e5")
+text = "Postage Fee:"
+
+[node name="Value" type="Label" parent="InventoryPanel/VBoxContainer/Body/Sidebar/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+theme_override_fonts/font = ExtResource("2_y4j26")
+
+[node name="LocationHeader" type="Label" parent="InventoryPanel/VBoxContainer/Body/Sidebar/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+theme_override_fonts/font = ExtResource("5_864e5")
+text = "Port:"
+
+[node name="Destination" type="RichTextLabel" parent="InventoryPanel/VBoxContainer/Body/Sidebar/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_type_variation = &"Calligraphy"
+
+[node name="NotesHeader" type="Label" parent="InventoryPanel/VBoxContainer/Body/Sidebar/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+theme_override_fonts/font = ExtResource("5_864e5")
+text = "Notes:"
+
+[node name="Description" type="RichTextLabel" parent="InventoryPanel/VBoxContainer/Body/Sidebar/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HandLettered"
+fit_content = true
+scroll_active = false
+
+[node name="TownInventory" type="MarginContainer" parent="InventoryPanel/VBoxContainer/Body"]
+layout_mode = 2
+
+[node name="Background" type="NinePatchRect" parent="InventoryPanel/VBoxContainer/Body/TownInventory"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_qrevp")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryPanel/VBoxContainer/Body/TownInventory"]
+layout_mode = 2
+
+[node name="ContractHeader" type="MarginContainer" parent="InventoryPanel/VBoxContainer/Body/TownInventory/VBoxContainer"]
+layout_mode = 2
+
+[node name="Background" type="NinePatchRect" parent="InventoryPanel/VBoxContainer/Body/TownInventory/VBoxContainer/ContractHeader"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_qrevp")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="InventoryPanel/VBoxContainer/Body/TownInventory/VBoxContainer/ContractHeader"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c0x5o")
+
+[node name="Label" type="Label" parent="InventoryPanel/VBoxContainer/Body/TownInventory/VBoxContainer/ContractHeader/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("2_y4j26")
+text = "Contracts"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TownContracts" type="GridContainer" parent="InventoryPanel/VBoxContainer/Body/TownInventory/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 3
+
+[node name="InventorySlot1" parent="InventoryPanel/VBoxContainer/Body/TownInventory/VBoxContainer/TownContracts" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../../../..")
+inventory_type = "contract"
+
+[node name="InventorySlot2" parent="InventoryPanel/VBoxContainer/Body/TownInventory/VBoxContainer/TownContracts" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../../../..")
+inventory_type = "contract"
+
+[node name="InventorySlot3" parent="InventoryPanel/VBoxContainer/Body/TownInventory/VBoxContainer/TownContracts" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../../../..")
+inventory_type = "contract"
+
+[node name="InventorySlot4" parent="InventoryPanel/VBoxContainer/Body/TownInventory/VBoxContainer/TownContracts" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../../../..")
+inventory_type = "contract"
+
+[node name="InventorySlot5" parent="InventoryPanel/VBoxContainer/Body/TownInventory/VBoxContainer/TownContracts" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../../../..")
+inventory_type = "contract"
+
+[node name="InventorySlot6" parent="InventoryPanel/VBoxContainer/Body/TownInventory/VBoxContainer/TownContracts" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+parent_inventory = NodePath("../../../../../../..")
+inventory_type = "contract"
+
+[node name="DropOffHeader" type="MarginContainer" parent="InventoryPanel/VBoxContainer/Body/TownInventory/VBoxContainer"]
+layout_mode = 2
+
+[node name="Background" type="NinePatchRect" parent="InventoryPanel/VBoxContainer/Body/TownInventory/VBoxContainer/DropOffHeader"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_qrevp")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="InventoryPanel/VBoxContainer/Body/TownInventory/VBoxContainer/DropOffHeader"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c0x5o")
+
+[node name="Label" type="Label" parent="InventoryPanel/VBoxContainer/Body/TownInventory/VBoxContainer/DropOffHeader/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("2_y4j26")
+text = "Drop-Off"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DropOff" parent="InventoryPanel/VBoxContainer/Body/TownInventory/VBoxContainer" node_paths=PackedStringArray("parent_inventory") instance=ExtResource("3_8k5cy")]
+layout_mode = 2
+size_flags_horizontal = 4
+parent_inventory = NodePath("../../../../../..")
+inventory_type = "dropoff"
+
+[connection signal="pressed" from="InventoryPanel/VBoxContainer/Header/PanelContainer/HBoxContainer/UICloseButton" to="." method="_on_close_button_pressed"]

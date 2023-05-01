@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://dla78350gaady"]
+
+[ext_resource type="Script" path="res://scripts/Tutorial.gd" id="1_4d6ci"]
+[ext_resource type="Texture2D" uid="uid://cc3p0ew6t6o4w" path="res://assets/title_wide.png" id="1_yuwib"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ud1ki"]
+bg_color = Color(0.721569, 0.8, 0.878431, 1)
+
+[node name="Tutorial" type="PanelContainer"]
+process_mode = 3
+z_index = 1
+custom_minimum_size = Vector2(854, 480)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ud1ki")
+script = ExtResource("1_4d6ci")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_yuwib")
+stretch_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.133333, 0.12549, 0.203922, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center] Use WASD to sail. 
+The cargo inventory can be opened with E, and when approaching a port, press the spacebar to dock.
+Press ESC at any time to pause the game.
+
+Thanks for playing!
+[/center]"
+fit_content = true
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"PaperButton"
+theme_override_font_sizes/font_size = 24
+text = "Start Game"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

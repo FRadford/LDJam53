@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://3nib1visxjn1"]
+
+[ext_resource type="Texture2D" uid="uid://eq63n73ues2p" path="res://assets/water.png" id="1_115w8"]
+[ext_resource type="Script" path="res://scripts/MainMenu.gd" id="2_y1ov0"]
+[ext_resource type="Texture2D" uid="uid://bblbmc58cusdo" path="res://assets/title.png" id="2_ypq01"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vss0k"]
+texture = ExtResource("1_115w8")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MainMenu" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_vss0k")
+script = ExtResource("2_y1ov0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_ypq01")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="StartButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+theme_type_variation = &"PaperButton"
+theme_override_font_sizes/font_size = 32
+text = "Start Game"
+
+[node name="QuitButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+theme_type_variation = &"PaperButton"
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

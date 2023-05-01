@@ -1,0 +1,16 @@
+{
+	"letter": {
+		"width": 1,
+		"height": 1,
+		"display_name": "Mail",
+		"description": "A piece of mail, looks important.",
+		"value": 30
+	},
+	"parcel": {
+		"width": 1,
+		"height": 1,
+		"display_name": "Parcel",
+		"description": "A small parcel, surprisingly heavy!",
+		"value": 60
+	}
+}

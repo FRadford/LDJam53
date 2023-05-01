@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://callhshu36ysu"]
+
+[ext_resource type="Script" path="res://scripts/Town.gd" id="1_4o52t"]
+[ext_resource type="Texture2D" uid="uid://cfyu460dn4g08" path="res://assets/town_marker.png" id="2_fmn3i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o3jds"]
+radius = 12.0416
+
+[node name="Town" type="StaticBody2D" groups=["town"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_4o52t")
+
+[node name="TownName" type="Label" parent="."]
+offset_left = -78.0
+offset_top = -50.0
+offset_right = 79.0
+offset_bottom = -15.0
+theme_type_variation = &"HeaderSmall"
+theme_override_colors/font_color = Color(0.133333, 0.12549, 0.203922, 1)
+text = "Town"
+horizontal_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("2_fmn3i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o3jds")

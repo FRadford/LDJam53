@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://w5dwni664mt0"]
+
+[ext_resource type="Texture2D" uid="uid://bdv53a2hn6wk4" path="res://assets/inventory_slot.png" id="1_x2hpi"]
+[ext_resource type="Script" path="res://scripts/InventorySlot.gd" id="2_q7fgy"]
+[ext_resource type="Texture2D" uid="uid://cb8up0khfhfsr" path="res://assets/item_selector.png" id="3_h2ra8"]
+[ext_resource type="Texture2D" uid="uid://codwm4lcvu4tr" path="res://assets/error_highlight.png" id="4_8gxpu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5bk6g"]
+texture = ExtResource("1_x2hpi")
+
+[node name="InventorySlot" type="Panel"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_5bk6g")
+script = ExtResource("2_q7fgy")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="Highlight" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_h2ra8")
+
+[node name="Error" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_8gxpu")
